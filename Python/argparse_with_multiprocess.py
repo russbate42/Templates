@@ -62,14 +62,6 @@ OutputDir = args.output_dir
 results_dict_raw = dict()
 results_dict = dict()
 
-if Test:
-    print('Running in test mode')
-    for jo_folder, mp in jo_dict.items():
-        _output = run_subprocess2(Generation_script_dict[mp], echo_command=True,
-                        print_output=True, capture_output=True)
-        break
-    sys.exit()
-
 with ProcessPoolExecutor(max_workers=CPUs) as executor:
     for jo_folder, mp in jo_dict.items():
         print('Submitting run script in {}'.format(mp))
@@ -83,7 +75,7 @@ for key, val in results_dict_raw.items():
 
 if PrintResults:
     for mp, value in results_dict.items():
-        print('\n\n\t=== Mass Point: {} ===\n'.format(mp))
+        print('\n\n\t=== Results: {} ===\n'.format(mp))
         print(value)
 
 ## Same pickle file
