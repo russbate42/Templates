@@ -28,6 +28,10 @@ with ProcessPoolExecutor(max_workers=CPUs) as executor:
         results_dict_raw[thing_to_iterate] = executor.submit(myfunction,
                             A, B, optarg=3)
 
+    prints('\n\n#===============================#')
+    prints('# Waiting on ProcessPoolExecutor ..')
+    prints('#===============================#\n\n')
+
 ## Results must be serializeable (pickleable)
 ## Same pickle file
 with open('{}.pickle'.format(PickleFileName), 'wb') as handle:
