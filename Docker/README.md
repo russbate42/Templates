@@ -14,3 +14,11 @@ Remove with `docker image rm -f hello-world`
 
 Docker images are not files that are found in the directory, they are images
 created, and verified with `docker images`
+
+**Important**: Clean docker with `docker system prune -a --volumes`
+
+## Ubuntu Build
+```zsh
+docker build -f ubuntu_nvim -r ubuntu_nvim
+```
+

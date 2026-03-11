@@ -1,0 +1,26 @@
+FROM ubuntu:22.04
+
+RUN apt-get update && apt-get install -y \
+    curl \
+    build-essential \
+    nodejs \
+    npm \
+    luarocks \
+    python3.10-venv \
+    libclang-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Get rust
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+ENV PATH="/root/.cargo/bin:${PATH}"
+
+# install rust cargo packages
+RUN cargo install ripgrep
+RUN rg --version
+RUN cargo install tree-sitter-cli
+
+# Check node
+RUN node --version
+RUN npm --version
+RUN npm install -g neovim
+
